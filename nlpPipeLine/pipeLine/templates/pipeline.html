@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pipeline</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <style type="text/css">
+    body {
+  background-color: lightblue;
+}
+    .col1 * {
+   width:100%;
+   height:90%;
+   }
+   .func{
+   font-size: 40px;
+   }
+   #input {
+    width: 100%; /* Ширина макета */
+    height: 280px;
+    float: top 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    margin: 0 auto; /* Выравниваем по центру */
+   }
+   #output {
+    width: 84%; /* Ширина макета */
+    height: 280px;
+    position: absolute;
+    bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto; /* Выравниваем по центру */
+   }
+   #choice_form {
+    width: 15%; /* Ширина макета */
+    height: 280px;
+    font-size: 20px;
+    position: absolute;
+    bottom: 0px;
+    left: 85%; /* Положение от левого края */
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto; /* Выравниваем по центру */
+   }
+   #functions {
+   font-size: 50px;
+    text-align: center;
+   }
+   </style>
+</head>
+<body>
+
+
+<form method = "post">
+    {% csrf_token %}
+    <div id="input" class="col1">
+
+<textarea name="input_text" id="input_text" class="form-control">{{input}}</textarea>
+</div>
+
+    <div id="functions">
+        {% if choices %}
+    {% for function in choices %}
+        <span class="btn btn-primary btn-lg func">
+                                       {{function}}
+                                   </span>
+
+      {% endfor %}
+
+    {% endif %}
+    </div>
+    <div>
+
+    <div id="output" class="col1">
+<textarea name="output_text" id="output_text"  class="form-control">{{output}}</textarea>
+</div>
+        <div id="choice_form">
+        {% if queryset %}
+    <select name="cars" id="cars">
+          {% for function in queryset %}
+
+         <option value="{{function.id}}">{{function.name}}</option>
+
+      {% endfor %}
+    </select>
+    {% endif %}
+    <input name="submit" id="submit" type="submit" value={{for_submit}} class="btn btn-success"/>
+    <input name="submit" id="clear" type="submit" value="Clear" class="btn btn-danger"/>
+        </div>
+    </div>
+</form>
+{{save}}
+
+</body>
+</html>

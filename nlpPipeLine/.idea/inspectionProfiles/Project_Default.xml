@@ -1,0 +1,51 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E501" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N801" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="map" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="sc2.constants.*" />
+          <option value="terran_mmm.SUPPLYDEPOTLOWERED" />
+          <option value="terran_learn.SUPPLYDEPOTLOWERED" />
+          <option value="terran_learn.COMMANDCENTER" />
+          <option value="terran_learn.SCV" />
+          <option value="terran_learn.ORBITALCOMMAND" />
+          <option value="terran_learn.PLANETARYFORTRESS" />
+          <option value="terran_learn.COMMANDCENTERTRAIN_SCV" />
+          <option value="terran_learn.UPGRADETOORBITAL_ORBITALCOMMAND" />
+          <option value="terran_learn.CANCEL_QUEUE1" />
+          <option value="terran_learn.CANCELSLOT_QUEUE1" />
+          <option value="terran_learn.CANCEL" />
+          <option value="terran_learn.CANCEL_QUEUE5" />
+          <option value="terran_learn.BARRACKS" />
+          <option value="terran_learn.CANCEL_MORPHORBITAL" />
+          <option value="terran_learn.*" />
+          <option value="terran_mmm.BROODLORD" />
+          <option value="terran_mmm.*" />
+          <option value="mysite.firstapp.views.map" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
