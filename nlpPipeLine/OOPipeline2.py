@@ -22,8 +22,6 @@ class Text_to_sent(Pipe):
     def piping(self, text):
         sent = nltk.sent_tokenize(text)
         return sent
-        #for target in self.targets:
-        #    target.piping(sent)
 
     def add_target(self, target):
         self.targets.append(target)
@@ -45,8 +43,6 @@ class Text_to_words(Pipe):
         else:
             words = nltk.word_tokenize(text)
         return words
-        #for target in self.targets:
-        #    target.piping(words)
 
     def add_target(self, target):
         self.targets.append(target)
@@ -77,8 +73,6 @@ class Stemming(Pipe):
             stemmed_words.append(stemmer.stem(word=word))
 
         return stemmed_words
-        #for target in self.targets:
-        #    target.piping(stemmed_words)
 
     def add_target(self, target):
         self.targets.append(target)
@@ -95,8 +89,6 @@ class Default_lemmatizing(Pipe):
             lemmatized_words.append(lemmatizer.lemmatize(word=word))
 
         return lemmatized_words
-        #for target in self.targets:
-        #    target.piping(lemmatized_words)
 
     def add_target(self, target):
         self.targets.append(target)
@@ -122,8 +114,6 @@ class Lemmatizing_after_pos_tag(Pipe):
             lemmatized_words.append(lemmatizer.lemmatize(word=word[0], pos=pos))
 
         return lemmatized_words
-        #for target in self.targets:
-        #    target.piping(lemmatized_words)
 
     def add_target(self, target):
         self.targets.append(target)
@@ -137,8 +127,6 @@ class Pos_tag(Pipe):
         tagged_words = nltk.pos_tag(words)
 
         return tagged_words
-        #for target in self.targets:
-        #    target.piping(tagged_words)
 
     def add_target(self, target):
         self.targets.append(target)
@@ -149,7 +137,6 @@ class Pos_tag(Pipe):
 
 class Printer(Pipe):
     def piping(self, line):
-        #print(line)
         return line
 
     def add_target(self, target):
@@ -183,9 +170,6 @@ class Pipeline:
 
         for i in list:
             self.line[i[0]].add_target(self.line[i[2]])
-
-        #for i in range(len(self.line)):
-            #print(self.line[i])
 
 
     def piping(self, text, current = None):
@@ -234,50 +218,22 @@ class Pipeline:
             res = current.piping(res)
         return res
 
+#    For create "pipeline" tree, we create matrix with 2 field for every function
+#    id_parent, type_parent, id_child, type_child
+#    below K is sequnce of that functions
+#    [Text_to_sent, Text_to_words, Without_stop_words, Pos_tag, Output]
 
-# parent_id, parent_type, id, type
-k = np.array([
+K = np.array([
     [1, 0, 1, 1],
     [1, 1, 1, 2],
     [1, 2, 1, 7],
+    [1, 1, 1, 4],
+    [1, 4, 2, 7]
 ])
 
-
-#
-#     [Text_to_words, Without_stop_words, Pos_tag, Output]
-#
-# k = np.array([
-#
-#     [  1,  2  ],
-#     [  2,  3  ],
-#     [  3,  7  ],
-#     [  7,  8  ],
-#
-# ])
-
-p = Pipeline(k)
-
-# p.get_structure()
-#
-# print(p.structure)
+p = Pipeline(K)
 
 p.piping(text=t)
 
 for i in p.final_res:
     print(i)
-
-# p.get_structure()
-#
-# for i in p.structure:
-#     print(i)
-
-
-
-
-
-
-
-
-
-
-###
